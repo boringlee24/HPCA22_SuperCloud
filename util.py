@@ -3,6 +3,7 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter, AutoMinorLoc
 import plot_functions
 import numpy as np
 from collections import Counter
+import matplotlib as mp
 
 def plot_cdf_utilization(gpu_join):
 
@@ -75,7 +76,7 @@ def plot_job_types_pie():
                fontsize=15,edgecolor='black',borderpad=0.3,handletextpad=0.3,handlelength=1,columnspacing=1.5)
     plt.show()
 
-def plot_users_and_job_types(gpu_user_join_rm_small_runtime):
+def plot_users_and_job_types(gpu_user_join, gpu_user_join_rm_small_runtime):
 
     gpu_user_join_rm_small_runtime['GPU_hours']=gpu_user_join_rm_small_runtime['totalexecutiontime_sec']*gpu_user_join_rm_small_runtime['GPU_Count']
     
@@ -99,8 +100,8 @@ def plot_users_and_job_types(gpu_user_join_rm_small_runtime):
     gpu_user_join_rm_small_runtime_EXIT['fail_type']=gpu_user_join_rm_small_runtime_EXIT['state'].map({4: 'Canceled', 5: 'Failed', 6: 'Timeout+',7: 'Timeout+',11: 'Timeout+',1024: 'Timeout+'})
     col_for_tk_exit=['totalexecutiontime_sec','avgmemoryutilization_pct','smutilization_pct_avg','maxgpumemoryused_bytes','GPU_Count','GPU_hours','fail_type']
     col_for_tk=['totalexecutiontime_sec','avgmemoryutilization_pct','smutilization_pct_avg','maxgpumemoryused_bytes','GPU_Count','GPU_hours']
-    gpu_user_join_rm_small_runtime_EXIT[col_for_tk_exit].to_csv('fail_job_stats.csv')
-    gpu_user_join_rm_small_runtime_JOB_COMPLETE[col_for_tk].to_csv('complete_job_stats.csv')
+#    gpu_user_join_rm_small_runtime_EXIT[col_for_tk_exit].to_csv('fail_job_stats.csv')
+#    gpu_user_join_rm_small_runtime_JOB_COMPLETE[col_for_tk].to_csv('complete_job_stats.csv')
     
     df_all=gpu_user_join_rm_small_runtime[['id_user','GPU_hours']].groupby('id_user').sum()
     df_any_fail=gpu_user_join_rm_small_runtime_EXIT[['id_user','GPU_hours']].groupby('id_user').sum()
@@ -185,10 +186,10 @@ def plot_users_and_job_types(gpu_user_join_rm_small_runtime):
     df_tmp['dummy_col']=df_tmp['jobs_Complete_pct']+df_tmp['jobs_Canceled_pct']
     df_tmp=df_tmp.sort_values('jobs_Complete_pct')
     jobs_data=(df_tmp.transpose().to_numpy().tolist())
-    
+
     jobs_data = jobs_data
     gpuh_data = gpuh_data
-    fig = mp.figure(figsize=(5.5, 2.5))
+    fig = plt.figure(figsize=(5.5, 2.5))
     fig.subplots_adjust(left=0.125, top=0.83, right=0.965, bottom=0.205, wspace=0.55)
     axl = fig.add_subplot(111, frameon=False)
     axl.tick_params(labelcolor='none', top=False, bottom=False, left=False, right=False)
@@ -210,8 +211,8 @@ def plot_users_and_job_types(gpu_user_join_rm_small_runtime):
     ax.grid(color='white', linestyle=':',linewidth=1)
     ax.set_xlim([0, len(d0)-1])
     ax.set_ylim([0, 100])
-    mp.setp(ax.get_xticklabels(), fontsize=13)
-    mp.setp(ax.get_yticklabels(), fontsize=13)
+    plt.setp(ax.get_xticklabels(), fontsize=13)
+    plt.setp(ax.get_yticklabels(), fontsize=13)
     ax.set_xlabel('Num. Users (%)', fontsize=13)
     ax.set_ylabel('Num. Jobs (%)', fontsize=13)
     ax = fig.add_subplot(122)
@@ -230,14 +231,14 @@ def plot_users_and_job_types(gpu_user_join_rm_small_runtime):
     ax.set_xlim([0, len(d0)-1])
     ax.set_ylim([0, 100])
     ax.grid(color='white', linestyle=':',linewidth=1)
-    mp.setp(ax.get_xticklabels(), fontsize=13)
-    mp.setp(ax.get_yticklabels(), fontsize=13)
+    plt.setp(ax.get_xticklabels(), fontsize=13)
+    plt.setp(ax.get_yticklabels(), fontsize=13)
     ax.set_xlabel('Num. Users (%)', fontsize=13)
     ax.set_ylabel('Num. GPU\nHours (%)', fontsize=13)
     axl.legend(plots, ['Mature', 'Exploratory', 'Development', 'IDE'],
-               bbox_to_anchor=(0.0, 1.075, 1.0, 0.102), loc='lower left', ncol=4,
-               borderaxespad=0., fontsize=13, edgecolor='black', mode='expand',
-               handletextpad=0.2, borderpad=0.3, handlelength=1.2)
+	bbox_to_anchor=(0.0, 1.075, 1.0, 0.102), loc='lower left', ncol=4,
+	borderaxespad=0., fontsize=13, edgecolor='black', mode='expand',
+	handletextpad=0.2, borderpad=0.3, handlelength=1.2)
     plt.show()
 
 def plot_multi_gpu_jobs(gpu_user_join_rm_small_runtime):
