@@ -6,8 +6,10 @@ from collections import Counter
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
+
+home = str(Path.home())
 start = time.time()
-gpu_ts_main=pd.read_csv("/some_path/anon_nvidia_smi.csv")
+gpu_ts_main=pd.read_csv("/some_path/nvidia_smi.csv")
 end = time.time()
 print (f"Sampling freq : {gpu_ts_main.iloc[1]['timestamp']-gpu_ts_main.iloc[0]['timestamp']}")
 # gpu_ts_main.shape #(477606994, 12)
