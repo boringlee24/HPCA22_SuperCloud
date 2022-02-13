@@ -38,7 +38,9 @@ aws s3 cp s3://mit-supercloud-dataset/2022-hpca/scheduler_data.csv ~/Downloads/h
 
 We have provided a jupyter notebook file to demonstrate how to use the data to generate some of the figures in the paper. You can find the notebook [here](https://github.com/boringlee24/HPCA22_SuperCloud/blob/main/notebook.ipynb)
 
-## Questions
+## Usage
 
 Please feel free to email me any questions about the dataset.
 My email: [li.baol@northeastern.edu](li.baol@northeastern.edu)
+
+If you are interested in using the dataset, please cite this paper.
