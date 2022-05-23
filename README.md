@@ -44,3 +44,15 @@ Please feel free to email me any questions about the dataset.
 My email: [li.baol@northeastern.edu](li.baol@northeastern.edu)
 
 If you are interested in using the dataset, please cite this paper.
+
+```BibTeX
+@INPROCEEDINGS{9773216,
+  author={Li, Baolin and Arora, Rohin and Samsi, Siddharth and Patel, Tirthak and Arcand, William and Bestor, David and Byun, Chansup and Roy, Rohan Basu and Bergeron, Bill and Holodnak, John and Houle, Michael and Hubbell, Matthew and Jones, Michael and Kepner, Jeremy and Klein, Anna and Michaleas, Peter and McDonald, Joseph and Milechin, Lauren and Mullen, Julie and Prout, Andrew and Price, Benjamin and Reuther, Albert and Rosa, Antonio and Weiss, Matthew and Yee, Charles and Edelman, Daniel and Vanterpool, Allan and Cheng, Anson and Gadepally, Vijay and Tiwari, Devesh},
+  booktitle={2022 IEEE International Symposium on High-Performance Computer Architecture (HPCA)}, 
+  title={AI-Enabling Workloads on Large-Scale GPU-Accelerated System: Characterization, Opportunities, and Implications}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={1224-1237},
+  doi={10.1109/HPCA53966.2022.00093}}
+```
